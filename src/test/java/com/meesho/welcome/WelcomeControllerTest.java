@@ -42,4 +42,11 @@ class WelcomeControllerTest {
                .andExpect(status().isOk())
                .andExpect(content().string(containsString("UP")));
     }
+
+    @Test
+    void welcomePageHasLightPinkBackground() throws Exception {
+        mockMvc.perform(get("/"))
+               .andExpect(status().isOk())
+               .andExpect(content().string(containsString("background: #fff0f5;")));
+    }
 }
