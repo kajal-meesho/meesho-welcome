@@ -42,4 +42,11 @@ class WelcomeControllerTest {
                .andExpect(status().isOk())
                .andExpect(content().string(containsString("UP")));
     }
+
+    @Test
+    void welcomePageContainsFooter() throws Exception {
+        mockMvc.perform(get("/"))
+               .andExpect(status().isOk())
+               .andExpect(content().string(containsString("\u00a9 2026 Meesho")));
+    }
 }

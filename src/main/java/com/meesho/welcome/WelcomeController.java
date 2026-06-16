@@ -24,6 +24,7 @@ public class WelcomeController {
                 + "        main { max-width: 720px; margin: 48px auto; padding: 24px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }\n"
                 + "        h1 { color: #f43397; margin-top: 0; }\n"
                 + "        .cta { display: inline-block; margin-top: 16px; padding: 12px 24px; background: #f43397; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; }\n"
+                + "        footer { background: #f43397; color: white; text-align: center; padding: 12px 24px; }\n"
                 + "    </style>\n"
                 + "</head>\n"
                 + "<body>\n"
@@ -33,6 +34,7 @@ public class WelcomeController {
                 + "        <p>India's #1 reselling app. Shop lakhs of products from local sellers across India.</p>\n"
                 + "        <a class=\"cta\" href=\"/shop\">Start shopping</a>\n"
                 + "    </main>\n"
+                + "    <footer>\u00a9 2026 Meesho. All rights reserved.</footer>\n"
                 + "</body>\n"
                 + "</html>";
     }
@@ -50,6 +52,7 @@ public class WelcomeController {
                 + "        main { max-width: 720px; margin: 48px auto; padding: 24px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }\n"
                 + "        h1 { color: #f43397; margin-top: 0; }\n"
                 + "        .back { display: inline-block; margin-top: 16px; padding: 12px 24px; background: #f43397; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; }\n"
+                + "        footer { background: #f43397; color: white; text-align: center; padding: 12px 24px; }\n"
                 + "    </style>\n"
                 + "</head>\n"
                 + "<body>\n"
@@ -59,6 +62,7 @@ public class WelcomeController {
                 + "        <p>Millions of products from sellers across India. Coming soon!</p>\n"
                 + "        <a class=\"back\" href=\"/\">&#8592; Back to home</a>\n"
                 + "    </main>\n"
+                + "    <footer>\u00a9 2026 Meesho. All rights reserved.</footer>\n"
                 + "</body>\n"
                 + "</html>";
     }
