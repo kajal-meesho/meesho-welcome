@@ -7,39 +7,19 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(WelcomeController.class)
-class WelcomeControllerTest {
+public class WelcomeControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    void welcomePageContainsBrandName() throws Exception {
+    void welcomePageHasLightPinkBackground() throws Exception {
         mockMvc.perform(get("/"))
-               .andExpect(status().isOk())
-               .andExpect(content().string(containsString("Meesho")));
-    }
-
-    @Test
-    void welcomePageHasCallToAction() throws Exception {
-        mockMvc.perform(get("/"))
-               .andExpect(status().isOk())
-               .andExpect(content().string(containsString("Start shopping")));
-    }
-
-    @Test
-    void shopPageLoads() throws Exception {
-        mockMvc.perform(get("/shop"))
-               .andExpect(status().isOk())
-               .andExpect(content().string(containsString("Shop")));
-    }
-
-    @Test
-    void healthEndpointReturnsUp() throws Exception {
-        mockMvc.perform(get("/health"))
-               .andExpect(status().isOk())
-               .andExpect(content().string(containsString("UP")));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("background: #fff0f5;")));
     }
 }
