@@ -29,7 +29,7 @@ public class WelcomeController {
                 + "<body>\n"
                 + "    <header>Meesho</header>\n"
                 + "    <main>\n"
-                + "        <h1>Welcome to Meesho</h1>\n"
+                + "        <h1>Welcome to Meesho, Kajal</h1>\n"
                 + "        <p>India's #1 reselling app. Shop lakhs of products from local sellers across India.</p>\n"
                 + "        <a class=\"cta\" href=\"/shop\">Start shopping</a>\n"
                 + "    </main>\n"
