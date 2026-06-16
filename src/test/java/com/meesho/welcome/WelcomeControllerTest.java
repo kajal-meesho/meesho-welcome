@@ -30,6 +30,13 @@ class WelcomeControllerTest {
     }
 
     @Test
+    void welcomePageHasLightPinkBackground() throws Exception {
+        mockMvc.perform(get("/"))
+               .andExpect(status().isOk())
+               .andExpect(content().string(containsString("background: #fff0f5")));
+    }
+
+    @Test
     void shopPageLoads() throws Exception {
         mockMvc.perform(get("/shop"))
                .andExpect(status().isOk())

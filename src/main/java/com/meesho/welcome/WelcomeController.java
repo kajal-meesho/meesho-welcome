@@ -19,7 +19,7 @@ public class WelcomeController {
                 + "    <meta charset=\"UTF-8\">\n"
                 + "    <title>Meesho</title>\n"
                 + "    <style>\n"
-                + "        body { font-family: sans-serif; margin: 0; padding: 0; background: #f8f3ff; }\n"
+                + "        body { font-family: sans-serif; margin: 0; padding: 0; background: #fff0f5; }\n"
                 + "        header { background: #f43397; color: white; padding: 16px 24px; font-size: 24px; font-weight: 600; }\n"
                 + "        main { max-width: 720px; margin: 48px auto; padding: 24px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }\n"
                 + "        h1 { color: #f43397; margin-top: 0; }\n"
