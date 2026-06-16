@@ -1,30 +1,45 @@
 package com.meesho.welcome;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.web.servlet.MockMvc;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.hamcrest.Matchers.containsString;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@WebMvcTest(WelcomeController.class)
 class WelcomeControllerTest {
 
-    private final WelcomeController controller = new WelcomeController();
+    @Autowired
+    private MockMvc mockMvc;
 
     @Test
-    void welcomePageContainsBrandName() {
-        String html = controller.welcome();
-        assertNotNull(html);
-        assertTrue(html.contains("Meesho"), "welcome page should mention Meesho");
+    void welcomePageContainsBrandName() throws Exception {
+        mockMvc.perform(get("/"))
+               .andExpect(status().isOk())
+               .andExpect(content().string(containsString("Meesho")));
     }
 
     @Test
-    void welcomePageHasCallToAction() {
-        String html = controller.welcome();
-        assertTrue(html.contains("Start shopping"), "welcome page should have a CTA");
+    void welcomePageHasCallToAction() throws Exception {
+        mockMvc.perform(get("/"))
+               .andExpect(status().isOk())
+               .andExpect(content().string(containsString("Start shopping")));
     }
 
     @Test
-    void healthEndpointReturnsUp() {
-        String json = controller.health();
-        assertTrue(json.contains("UP"), "health endpoint should report UP");
+    void shopPageLoads() throws Exception {
+        mockMvc.perform(get("/shop"))
+               .andExpect(status().isOk())
+               .andExpect(content().string(containsString("Shop")));
+    }
+
+    @Test
+    void healthEndpointReturnsUp() throws Exception {
+        mockMvc.perform(get("/health"))
+               .andExpect(status().isOk())
+               .andExpect(content().string(containsString("UP")));
     }
 }
