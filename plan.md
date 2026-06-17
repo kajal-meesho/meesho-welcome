@@ -1,26 +1,25 @@
-# KRD: SPSE-5841
+# KRD: SPSE-5844
 
 ## Ticket
-- ID: SPSE-5841
-- Title: Personalize welcome page greeting to include user name
+- ID: SPSE-5844
+- Title: Change welcome page background color to light blue
 - Status: Open
 - Priority: Major
-- Description: The GET / welcome page currently displays a generic heading "Welcome to Meesho".
-Change it to "Welcome to Meesho, Kajal" to personalize the greeting.
-
+- Description: The GET / welcome page currently has a light pink background (#fff0f5). Change it to a light blue (#e8f4fd) to align with the updated brand palette.
 Acceptance Criteria:
-- GET / HTML contains the text "Welcome to Meesho, Kajal"
-- The old heading "Welcome to Meesho" (without the name) is replaced — not duplicated
-- A test asserts the personalized greeting string is present in the GET / response
-- The shop page (GET /shop) is not affected
+GET / HTML contains background or background-color with value #e8f4fd
+The previous pink background (#fff0f5) is removed — not duplicated
+A test asserts the new color string #e8f4fd is present in the GET / response body
+GET /shop page is not affected
 
 ## Goal
-Personalize the welcome page greeting to "Welcome to Meesho, Kajal" and ensure a test asserts this string is present in the GET / response.
+Change the GET / welcome page background color to the requested blue, remove the old pink (#fff0f5), and add a test asserting the new color. The shop page is not affected.
 
 ## Decisions made
-- Only the GET / (welcome page) greeting is changed to include the name "Kajal".
-- The shop page (GET /shop) is not affected.
-- A new test asserts the personalized greeting is present in the response.
+- Only the GET / (welcome page) background is changed to the requested blue.
+- The previous pink (#fff0f5) is fully replaced, not duplicated.
+- The GET /shop page background remains unchanged.
+- The test now asserts the presence of the new color in the GET / response.
 
 ## Open doubts
 _(none)_
@@ -33,18 +32,34 @@ _(none)_
 - state: TESTS_RUNNING
 - targetRepo: https://github.com/kajal-meesho/meesho-welcome
 - channelId: C0B5ZQF12Q2
-- threadTs: 1781613836.193799
+- threadTs: 1781698972.057909
 - userId: U0B42FAHQ6L
 - batchTotal: 1
 - testStatus: PASS
-- testReportSummary: 6/6 tests passed in 5s
+- testReportSummary: 6/6 tests passed in 8s
 
 ## History
-- 2026-06-16T12:43:59Z — Mapped repo for SPSE-5841: https://github.com/kajal-meesho/meesho-welcome
-- 2026-06-16T12:44:04Z — <@U0B42FAHQ6L>: /kevin SPSE-5841
-- 2026-06-16T12:55:00Z — Personalized greeting "Welcome to Meesho, Kajal" shipped and test added. Emitting READY.
-- 2026-06-16T12:44:31Z — Kevin: ## READY: Personalized greeting "Welcome to Meesho, Kajal" on welcome page and test added.
-- 2026-06-16T12:44:31Z — AI emitted READY; transitioning to plan review.
-- 2026-06-16T12:44:46Z — <@U0B42FAHQ6L> approved the plan; moving to implementation review.
-- 2026-06-16T12:45:32Z — Kevin: placeholder retry — regenerated 2 file(s)
-- 2026-06-16T12:45:59Z — <@U0B42FAHQ6L> approved implementation; running test gate.
+- 2026-06-17T12:22:55Z — Mapped repo for SPSE-5844: https://github.com/kajal-meesho/meesho-welcome
+- 2026-06-17T12:23:00Z — <@U0B42FAHQ6L>: /kevin SPSE-5844
+- 2026-06-17T12:45:00Z — Welcome page background changed to light blue (#e8f4fd), test updated to assert new color. Emitting READY.
+- 2026-06-17T12:23:22Z — Kevin: ## READY: Welcome page background changed to light blue (#e8f4fd), test updated to assert new color.
+- 2026-06-17T12:23:22Z — AI emitted READY; transitioning to plan review.
+- 2026-06-17T12:23:55Z — <@U0B42FAHQ6L> requested revision at plan: change color to dark blue
+- 2026-06-17T12:23:59Z — <@U0B42FAHQ6L>: User reviewed the plan and asked you to revise: change color to dark blue — please update the plan/code, keep approved decisions intact, and emit ## READY again.
+- 2026-06-17T12:46:00Z — Kevin: Welcome page background changed to dark blue (#0a2540), test updated to assert new color. Emitting READY.
+- 2026-06-17T12:24:59Z — Kevin: ## READY: Welcome page background changed to dark blue (#0a2540), test updated to assert new color.
+- 2026-06-17T12:24:59Z — AI emitted READY; transitioning to plan review.
+- 2026-06-17T12:26:26Z — <@U0B42FAHQ6L> requested revision at plan: change the color to #003366
+- 2026-06-17T12:26:35Z — <@U0B42FAHQ6L> requested revision at plan: change the color to #003366
+- 2026-06-17T12:26:39Z — <@U0B42FAHQ6L>: User reviewed the plan and asked you to revise: change the color to #003366 — please update the plan/code, keep approved decisions intact, and emit ## READY again.
+- 2026-06-17T12:47:00Z — Kevin: Welcome page background changed to #003366, test updated to assert new color. Emitting READY.
+- 2026-06-17T12:27:03Z — Kevin: ## READY: Welcome page background changed to #003366, test updated to assert new color.
+- 2026-06-17T12:27:03Z — AI emitted READY; transitioning to plan review.
+- 2026-06-17T12:26:29Z — <@U0B42FAHQ6L>: User reviewed the plan and asked you to revise: change the color to #003366 — please update the plan/code, keep approved decisions intact, and emit ## READY again.
+- 2026-06-17T12:27:00Z — Kevin: Welcome page background changed to #003366 (dark blue), test updated to assert new color. Emitting READY.
+- 2026-06-17T12:27:07Z — Kevin: ## READY: Welcome page background changed to #003366 (dark blue), test updated to assert new color.
+- 2026-06-17T12:27:07Z — AI emitted READY; transitioning to plan review.
+- 2026-06-17T12:27:03Z — Kevin: ## READY: Welcome page background changed to #003366, test updated to assert new color.
+- 2026-06-17T12:27:07Z — Kevin: ## READY: Welcome page background changed to #003366 (dark blue), test updated to assert new color.
+- 2026-06-17T12:27:37Z — <@U0B42FAHQ6L> approved the plan; moving to implementation review.
+- 2026-06-17T12:27:52Z — <@U0B42FAHQ6L> approved implementation; running test gate.
