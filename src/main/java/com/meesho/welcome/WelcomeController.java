@@ -3,6 +3,7 @@ package com.meesho.welcome;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.Map;
 
 /**
  * Serves the Meesho welcome page at GET /.
@@ -64,7 +65,7 @@ public class WelcomeController {
     }
 
     @GetMapping(value = "/health", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String health() {
-        return "{\"status\":\"UP\"}";
+    public Map<String, String> health() {
+        return Map.of("status", "ok", "service", "meesho-welcome");
     }
 }
