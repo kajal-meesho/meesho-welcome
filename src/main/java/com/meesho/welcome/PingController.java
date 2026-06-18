@@ -6,14 +6,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-/**
- * Lightweight ping endpoint for uptime checks.
- */
 @RestController
 public class PingController {
 
     @GetMapping(value = "/ping", produces = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, String> ping() {
-        return Map.of("status", "pong", "service", "meesho-welcome");
+        return Map.of(
+                "status", "pong",
+                "service", "meesho-welcome",
+                "version", "1.0.0"
+        );
     }
 }

@@ -21,6 +21,7 @@ class PingControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(content().string(containsString("\"status\":\"pong\"")))
-                .andExpect(content().string(containsString("\"service\":\"meesho-welcome\"")));
+                .andExpect(content().string(containsString("\"service\":\"meesho-welcome\"")))
+                .andExpect(content().string(containsString("\"version\":\"1.0.0\"")));
     }
 }
