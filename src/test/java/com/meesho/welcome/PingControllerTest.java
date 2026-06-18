@@ -16,12 +16,12 @@ class PingControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void pingEndpointReturnsPongJson() throws Exception {
+    void pingEndpointReturnsAliveJson() throws Exception {
         mockMvc.perform(get("/ping"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json"))
-                .andExpect(content().string(containsString("\"status\":\"pong\"")))
-                .andExpect(content().string(containsString("\"service\":\"meesho-welcome\"")))
-                .andExpect(content().string(containsString("\"version\":\"1.0.0\"")));
+               .andExpect(status().isOk())
+               .andExpect(content().contentType("application/json"))
+               .andExpect(content().string(containsString("\"status\":\"alive\"")))
+               .andExpect(content().string(containsString("\"service\":\"meesho-welcome\"")))
+               .andExpect(content().string(containsString("\"version\":\"1.0.0\"")));
     }
 }

@@ -17,7 +17,7 @@ Add a unit test PingControllerTest that verifies 200, content-type, and both JSO
 No authentication required
 
 ## Goal
-Add a /ping endpoint that returns HTTP 200 with Content-Type: application/json and body {"status": "pong", "service": "meesho-welcome", "version": "1.0.0"}. Include a unit test PingControllerTest that verifies status, content-type, and all JSON fields.
+Add a /ping endpoint that returns HTTP 200 with Content-Type: application/json and body {"status": "alive", "service": "meesho-welcome", "version": "1.0.0"}. Include a unit test PingControllerTest that verifies status, content-type, and all JSON fields.
 
 ## Decisions made
 - /ping implemented as a new controller returning a Map<String, String> for automatic JSON serialization.
@@ -44,9 +44,9 @@ _(none)_
 - testStatus: PASS
 - testReportSummary: 7/7 tests passed in 8s
 - feedbackQueueJson: W3sic291cmNlIjoiR2l0SHViIiwiZ2hDb21tZW50SWQiOjQ3NDQyMzcwMTAsImdoVXNlckxvZ2luIjoia2FqYWwtbWVlc2hvIiwiYm9keSI6ImFkZCBhIFwidmVyc2lvblwiIGZpZWxkIHdpdGggdmFsdWUgXCIxLjAuMFwiIHRvIHRoZSAvcGluZyByZXNwb25zZSIsInNraXBSZWFzb24iOm51bGwsInNraXBwZWRBdCI6bnVsbH0seyJzb3VyY2UiOiJTbGFjayIsImdoQ29tbWVudElkIjpudWxsLCJnaFVzZXJMb2dpbiI6bnVsbCwiYm9keSI6InJlbmFtZSB0aGUgXCJzdGF0dXNcIiBmaWVsZCBmcm9tIFwicG9uZ1wiIHRvIFwiYWxpdmVcIiIsInNraXBSZWFzb24iOm51bGwsInNraXBwZWRBdCI6bnVsbH1d
-- activeFeedbackIndex: 0
-- feedbackPlanPanelTs: 1781801588.448249
-- feedbackImplPanelTs: 1781801654.122569
+- activeFeedbackIndex: 1
+- feedbackPlanPanelTs: 1781801719.901279
+- feedbackImplPanelTs: 1781801828.406349
 
 ## History
 - 2026-06-18T16:46:53Z — Mapped repo for SPSE-5851: https://github.com/kajal-meesho/meesho-welcome
@@ -66,3 +66,12 @@ _(none)_
 - 2026-06-18T16:54:30Z — AI implemented: added "version":"1.0.0" to /ping response and updated PingControllerTest.
 - 2026-06-18T16:54:09Z — Kevin: feedback impl 1/2: Add "version":"1.0.0" to /ping response and update PingControllerTest to verify it.
 - 2026-06-18T16:54:52Z — <@U0B42FAHQ6L> approved feedback impl 1
+- 2026-06-18T16:54:59Z — Feedback 1/2 implemented and pushed
+- 2026-06-18T16:55:10Z — AI planned: Plan to rename "status" field value from "pong" to "alive" in /ping response and test.
+- 2026-06-18T16:55:18Z — Kevin: feedback plan 2/2: Plan to rename "status" field value from "pong" to "alive" in /ping response and test
+- Update `src/main/java/com/meesho/welcome/PingController.java`:
+- Change the value of the "status" field in th…
+- 2026-06-18T16:56:44Z — <@U0B42FAHQ6L> approved feedback plan 2
+- 2026-06-18T16:57:00Z — AI implemented: renamed "status" value from "pong" to "alive" in /ping response and updated PingControllerTest.
+- 2026-06-18T16:57:04Z — Kevin: feedback impl 2/2: Renamed "status" field value from "pong" to "alive" in /ping response and updated PingControllerTest.
+- 2026-06-18T16:58:05Z — <@U0B42FAHQ6L> approved feedback impl 2
