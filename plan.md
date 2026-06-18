@@ -1,47 +1,52 @@
-# KRD: SPSE-5849
+# KRD: SPSE-5850
 
 ## Ticket
-- ID: SPSE-5849
-- Title: Add /health JSON endpoint to meesho-welcome service
+- ID: SPSE-5850
+- Title: Add /about endpoint to meesho-welcome service
 - Status: Open
 - Priority: Major
-- Description: Description: The meesho-welcome Spring Boot service currently only serves HTML pages (/ and /shop). Add a /health REST endpoint that returns a JSON response so monitoring tools and Kevin's canary probe can verify the service is alive without parsing HTML.
+- Description: The meesho-welcome Spring Boot service currently only has a /health endpoint. Add a /about endpoint that returns a JSON response with basic service metadata.
 Acceptance Criteria:
-GET /health returns HTTP 200
-Response body is JSON: {"status": "ok", "service": "meesho-welcome"}
-Response Content-Type is application/json
-GET / and GET /shop are not affected
-A test asserts /health returns status 200 and body contains "status": "ok"
+GET /about returns HTTP 200 with Content-Type: application/json
+Response body contains:
+{
+  "service": "meesho-welcome",
+  "team": "supplier-service",
+  "version": "1.0.0",
+  "description": "Meesho welcome page service"
+}
+Add a unit test AboutControllerTest that verifies the endpoint returns 200 and the correct JSON fields
+No authentication required — endpoint is public
 
 ## Goal
-Add a /health endpoint that returns JSON: {"status": "ok", "service": "meesho-welcome"} with HTTP 200 and Content-Type application/json, without affecting / or /shop.
+Expose a public /about endpoint returning service metadata as JSON, with a unit test verifying the response.
 
 ## Decisions made
-- The /health endpoint returns a Map<String, String> for automatic JSON serialization.
-- Test updated to assert status 200, Content-Type application/json, and correct JSON body.
+- /about implemented as a new controller returning a Map<String, String> for auto-JSON serialization.
+- Unit test AboutControllerTest covers HTTP 200, content-type, and all required fields.
 
 ## Open doubts
 _(none)_
 
 ## Current proposal
-- See `src/main/java/com/meesho/welcome/WelcomeController.java` (java)
-- See `src/test/java/com/meesho/welcome/WelcomeControllerTest.java` (java)
+- See `src/main/java/com/meesho/welcome/AboutController.java` (java)
+- See `src/test/java/com/meesho/welcome/AboutControllerTest.java` (java)
 
 ## State
 - state: TESTS_RUNNING
 - targetRepo: https://github.com/kajal-meesho/meesho-welcome
 - channelId: C0B5ZQF12Q2
-- threadTs: 1781796355.363039
+- threadTs: 1781799087.764589
 - userId: U0B42FAHQ6L
 - batchTotal: 1
 - testStatus: PASS
-- testReportSummary: 6/6 tests passed in 7s
+- testReportSummary: 7/7 tests passed in 7s
 
 ## History
-- 2026-06-18T15:25:59Z — Mapped repo for SPSE-5849: https://github.com/kajal-meesho/meesho-welcome
-- 2026-06-18T15:26:03Z — <@U0B42FAHQ6L>: /kevin SPSE-5849
-- 2026-06-18T15:32:00Z — Implemented /health JSON endpoint and updated test; emitting READY.
-- 2026-06-18T15:26:29Z — Kevin: ## READY: /health endpoint returns correct JSON, test updated for "ok" status.
-- 2026-06-18T15:26:29Z — AI emitted READY; transitioning to plan review.
-- 2026-06-18T15:27:19Z — <@U0B42FAHQ6L> approved the plan; moving to implementation review.
-- 2026-06-18T15:28:15Z — <@U0B42FAHQ6L> approved implementation; running test gate.
+- 2026-06-18T16:11:32Z — Mapped repo for SPSE-5850: https://github.com/kajal-meesho/meesho-welcome
+- 2026-06-18T16:11:38Z — <@U0B42FAHQ6L>: /kevin SPSE-5850
+- 2026-06-18T16:20:00Z — Implemented /about endpoint and AboutControllerTest; emitting READY.
+- 2026-06-18T16:11:50Z — Kevin: ## READY: Added /about endpoint with JSON metadata and unit test AboutControllerTest
+- 2026-06-18T16:11:50Z — AI emitted READY; transitioning to plan review.
+- 2026-06-18T16:12:24Z — <@U0B42FAHQ6L> approved the plan; moving to implementation review.
+- 2026-06-18T16:13:50Z — <@U0B42FAHQ6L> approved implementation; running test gate.
