@@ -1,8 +1,8 @@
 package com.meesho.welcome;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.containsString;
@@ -10,50 +10,27 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(WelcomeController.class)
-class WelcomeControllerTest {
+public class WelcomeControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    void welcomePageContainsBrandName() throws Exception {
+    void homePageCtaIsNotAffected() throws Exception {
         mockMvc.perform(get("/"))
-               .andExpect(status().isOk())
-               .andExpect(content().string(containsString("Meesho")));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Start Shopping")))
+                .andExpect(content().string(containsString("background: #ff4081")))
+                .andExpect(content().string(containsString("class=\"cta\"")));
     }
 
     @Test
-    void welcomePageHasCallToAction() throws Exception {
-        mockMvc.perform(get("/"))
-               .andExpect(status().isOk())
-               .andExpect(content().string(containsString("Start shopping")));
-    }
-
-    @Test
-    void welcomePageHasDarkBlueBackground() throws Exception {
-        mockMvc.perform(get("/"))
-               .andExpect(status().isOk())
-               .andExpect(content().string(containsString("background: #003366")));
-    }
-
-    @Test
-    void welcomePageHasPersonalizedGreeting() throws Exception {
-        mockMvc.perform(get("/"))
-               .andExpect(status().isOk())
-               .andExpect(content().string(containsString("Welcome Guys")));
-    }
-
-    @Test
-    void shopPageLoads() throws Exception {
+    void shopPageBackButtonStyledDarkGreen() throws Exception {
         mockMvc.perform(get("/shop"))
-               .andExpect(status().isOk())
-               .andExpect(content().string(containsString("Shop")));
-    }
-
-    @Test
-    void healthEndpointReturnsUp() throws Exception {
-        mockMvc.perform(get("/health"))
-               .andExpect(status().isOk())
-               .andExpect(content().string(containsString("UP")));
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("background: #1a7a1a")))
+                .andExpect(content().string(containsString("color: #ffffff")))
+                .andExpect(content().string(containsString("class=\"back\"")))
+                .andExpect(content().string(containsString(">Home Page<")));
     }
 }

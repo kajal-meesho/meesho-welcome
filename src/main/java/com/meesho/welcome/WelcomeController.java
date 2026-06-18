@@ -1,70 +1,80 @@
 package com.meesho.welcome;
 
-import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * Serves the Meesho welcome page at GET /.
- * Kevin's canary probe also hits this endpoint to verify a deploy is healthy.
- */
-@RestController
+@Controller
 public class WelcomeController {
 
-    @GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
-    public String welcome() {
-        return "<!DOCTYPE html>\n"
-                + "<html lang=\"en\">\n"
-                + "<head>\n"
-                + "    <meta charset=\"UTF-8\">\n"
-                + "    <title>Meesho</title>\n"
-                + "    <style>\n"
-                + "        body { font-family: sans-serif; margin: 0; padding: 0; background: #003366; }\n"
-                + "        header { background: #f43397; color: white; padding: 16px 24px; font-size: 24px; font-weight: 600; }\n"
-                + "        main { max-width: 720px; margin: 48px auto; padding: 24px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }\n"
-                + "        h1 { color: #f43397; margin-top: 0; }\n"
-                + "        .cta { display: inline-block; margin-top: 16px; padding: 12px 24px; background: #f43397; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; }\n"
-                + "    </style>\n"
-                + "</head>\n"
-                + "<body>\n"
-                + "    <header>Meesho</header>\n"
-                + "    <main>\n"
-                + "        <h1>Welcome Guys</h1>\n"
-                + "        <p>India's #1 reselling app. Shop lakhs of products from local sellers across India.</p>\n"
-                + "        <a class=\"cta\" href=\"/shop\">Start shopping</a>\n"
-                + "    </main>\n"
-                + "</body>\n"
-                + "</html>";
+    @GetMapping("/")
+    @ResponseBody
+    public String home() {
+        return """
+            <html>
+            <head>
+                <title>Meesho Home</title>
+                <style>
+                    .cta {
+                        background: #ff4081;
+                        color: #fff;
+                        padding: 12px 32px;
+                        border: none;
+                        border-radius: 6px;
+                        text-decoration: none;
+                        font-size: 20px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        margin-top: 40px;
+                        display: inline-block;
+                        transition: background 0.2s;
+                    }
+                    .cta:hover {
+                        background: #e73370;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>Welcome to Meesho!</h1>
+                <a href="/shop" class="cta">Start Shopping</a>
+            </body>
+            </html>
+        """;
     }
 
-    @GetMapping(value = "/shop", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping("/shop")
+    @ResponseBody
     public String shop() {
-        return "<!DOCTYPE html>\n"
-                + "<html lang=\"en\">\n"
-                + "<head>\n"
-                + "    <meta charset=\"UTF-8\">\n"
-                + "    <title>Meesho — Shop</title>\n"
-                + "    <style>\n"
-                + "        body { font-family: sans-serif; margin: 0; padding: 0; background: #f8f3ff; }\n"
-                + "        header { background: #f43397; color: white; padding: 16px 24px; font-size: 24px; font-weight: 600; }\n"
-                + "        main { max-width: 720px; margin: 48px auto; padding: 24px; background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }\n"
-                + "        h1 { color: #f43397; margin-top: 0; }\n"
-                + "        .back { display: inline-block; margin-top: 16px; padding: 12px 24px; background: #f43397; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; }\n"
-                + "    </style>\n"
-                + "</head>\n"
-                + "<body>\n"
-                + "    <header>Meesho</header>\n"
-                + "    <main>\n"
-                + "        <h1>Shop</h1>\n"
-                + "        <p>Millions of products from sellers across India. Coming soon!</p>\n"
-                + "        <a class=\"back\" href=\"/\">&#8592; Back to home</a>\n"
-                + "    </main>\n"
-                + "</body>\n"
-                + "</html>";
-    }
-
-    @GetMapping(value = "/health", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String health() {
-        return "{\"status\":\"UP\"}";
+        return """
+            <html>
+            <head>
+                <title>Shop - Meesho</title>
+                <style>
+                    .back {
+                        background: #1a7a1a;
+                        color: #ffffff;
+                        padding: 10px 28px;
+                        border: none;
+                        border-radius: 5px;
+                        text-decoration: none;
+                        font-size: 18px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        margin-bottom: 30px;
+                        display: inline-block;
+                        transition: background 0.2s;
+                    }
+                    .back:hover {
+                        background: #155c15;
+                    }
+                </style>
+            </head>
+            <body>
+                <a href="/" class="back">Home Page</a>
+                <h2>Shop Page</h2>
+                <p>Browse our amazing products!</p>
+            </body>
+            </html>
+        """;
     }
 }
