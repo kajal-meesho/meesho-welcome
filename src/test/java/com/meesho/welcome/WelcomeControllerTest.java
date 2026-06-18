@@ -51,9 +51,11 @@ class WelcomeControllerTest {
     }
 
     @Test
-    void healthEndpointReturnsUp() throws Exception {
+    void healthEndpointReturnsOkJson() throws Exception {
         mockMvc.perform(get("/health"))
                .andExpect(status().isOk())
-               .andExpect(content().string(containsString("UP")));
+               .andExpect(content().contentType("application/json"))
+               .andExpect(content().string(containsString("\"status\":\"ok\"")))
+               .andExpect(content().string(containsString("\"service\":\"meesho-welcome\"")));
     }
 }
