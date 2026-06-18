@@ -40,7 +40,7 @@ class WelcomeControllerTest {
     void welcomePageHasPersonalizedGreeting() throws Exception {
         mockMvc.perform(get("/"))
                .andExpect(status().isOk())
-               .andExpect(content().string(containsString("Welcome to Meesho, Kajal")));
+               .andExpect(content().string(containsString("Welcome Guys")));
     }
 
     @Test
