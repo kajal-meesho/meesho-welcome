@@ -58,4 +58,25 @@ class WelcomeControllerTest {
                .andExpect(content().string(containsString("\"status\":\"ok\"")))
                .andExpect(content().string(containsString("\"service\":\"meesho-welcome\"")));
     }
+
+    @Test
+    void sellPageLoadsAndContainsHeading() throws Exception {
+        mockMvc.perform(get("/sell"))
+               .andExpect(status().isOk())
+               .andExpect(content().string(containsString("Become a Seller")));
+    }
+
+    @Test
+    void sellPageContainsBenefitKeyword() throws Exception {
+        mockMvc.perform(get("/sell"))
+               .andExpect(status().isOk())
+               .andExpect(content().string(containsString("commission")));
+    }
+
+    @Test
+    void homepageContainsBecomeSellerLink() throws Exception {
+        mockMvc.perform(get("/"))
+               .andExpect(status().isOk())
+               .andExpect(content().string(containsString("Become a Seller")));
+    }
 }
